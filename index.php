@@ -1,76 +1,171 @@
+<?php
+// --- ЛОГИКА ОБРАБОТКИ (PHP) ---
+$message = ""; // Переменная для вывода уведомлений
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST['username']);
+    $email = htmlspecialchars($_POST['email']);
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    // Простая валидация
+    if (empty($name) || empty($email) || empty($password)) {
+        $message = "<p style='color:red;'>Пожалуйста, заполните все поля.</p>";
+    } elseif ($password !== $confirm_password) {
+        $message = "<p style='color:red;'>Пароли не совпадают!</p>";
+    } else {
+        // Здесь можно добавить сохранение в базу данных
+        $message = "<p style='color:green;'>Регистрация прошла успешно для $name!</p>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-	<title>Виноградов</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <style>
+        /* --- СТИЛИ (CSS) --- */
+        body {
+            font-family: "Times New Roman", Times, serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .reg-card {
+            background: #fff;
+            padding: 25px 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #ddd;
+        }
+
+        h2 {
+            text-align: center;
+            color: #555;
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 12px; /* Округлая форма как на картинке */
+            font-size: 18px;
+            box-sizing: border-box;
+            color: #666;
+        }
+
+        input::placeholder {
+            color: #bbb;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #000;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: #7a7a7a;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #555;
+        }
+
+        .agreement {
+            margin-top: 20px;
+            font-size: 13px;
+            line-height: 1.4;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .agreement a {
+            color: #5dade2;
+            text-decoration: underline;
+        }
+
+        .status-msg {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
-<?php
-header('Content-Type: text/html; charset=utf-8');
-// 1
-$str = "Привет"; 
-$num = 42; 
-$bool = true; 
-$empty = null; 
 
-echo "<p><strong>"; echo 'str'; echo "</strong>: " . htmlspecialchars($str, ENT_QUOTES, 'UTF-8') . " — тип: " . gettype($str) . "</p>";
-echo "<p><strong>num</strong>: " . $num . " — тип: " . gettype($num) . "</p>";
-echo "<p><strong>bool</strong>: " . ($bool ? 'true' : 'false') . " — тип: " . gettype($bool) . "</p>";
-echo "<p><strong>empty</strong>: "; var_export($empty); echo " — тип: " . gettype($empty) . "</p>";
+<div class="reg-card">
+    <h2>Регистрация</h2>
 
-// 2
-echo "<h1>Виноградов</h1>";
+    <div class="status-msg">
+        <?php echo $message; ?>
+    </div>
+    
+    <form action="" method="POST">
+        <div class="form-group">
+            <label>Имя:</label>
+            <input type="text" name="username" placeholder="Введите имя" required>
+        </div>
 
-// 3
-$condition = true; 
-if ($condition) {
-	echo "<p>ЭЕдиница — «за счастье». За отличные успехи ставилась оценка «1», и по нарастающей до четверки — за успехи «посредственные». А вот «выражение отсутствия всякого знания» грозило нулем. За каждый предмет лицеист получал три отметки, первые две менялись, а третья оставалась неизменна во время всего обучения: за способности или за талант.</p>";
-} else {
-	$imgUrl = "https://media.tenor.com/0FefgWaVTG4AAAAM/fire.gif  "; 
-	echo '<img src="' . htmlspecialchars($imgUrl, ENT_QUOTES, 'UTF-8') . '" alt="gif" />';
-}
+        <div class="form-group">
+            <label>Почта:</label>
+            <input type="email" name="email" placeholder="name@example.ru" required>
+        </div>
 
-// 4
-$a = 5; 
-$s = $a * $a;
-echo "<p>Площадь квадрата со стороной $a равна $s.</p>";
+        <div class="form-group">
+            <label>Пароль:</label>
+            <input type="password" name="password" placeholder="Введите пароль" required>
+        </div>
 
-// 5
-$a = 5; $b = 8; 
-$p = 2 * ($a + $b);
-echo "<p>Периметр прямоугольника со сторонами $a и $b равен $p.</p>";
+        <div class="form-group">
+            <label>Подтвердите пароль:</label>
+            <input type="password" name="confirm_password" placeholder="Повторите пароль" required>
+        </div>
 
-// 6
-echo "<p><i>Это курсивный текст, выведенный с помощью тега i.</i></p>";
+        <button type="submit" class="btn-submit">Зарегистрироваться</button>
 
-// 7
-echo "<p>";
-for ($i = 1; $i <= 9; $i++) {
-	echo $i . "<br>";
-}
-echo "</p>";
+        <div class="agreement">
+            <input type="checkbox" name="terms" checked required>
+            <label style="font-weight: normal; font-size: 13px;">
+                Создавая учетную запись, вы соглашаетесь с нашим <br>
+                <a href="#">Условием и конфиденциальностью</a>.
+            </label>
+        </div>
+    </form>
+</div>
 
-// 8
-$sample = "Программа";
-$lastChar = mb_substr($sample, mb_strlen($sample, 'UTF-8') - 1, 1, 'UTF-8');
-echo "<p>Последний символ строки \"$sample\" — $lastChar</p>";
-
-// 9
-$num = 47;
-$num += 7;
-$num -= 18;
-$num *= 10;
-$num /= 15;
-echo "<p>Результат упрощённых операций: $num</p>";
-
-// 10
-$secondsPerDay = 24 * 60 * 60;
-echo "<p>Количество секунд в сутках: $secondsPerDay</p>";
-
-?>
-<!-- Кнопка для перехода на index2.php -->
-<form action="index2.php" method="get">
-    <button type="submit">Перейти на index2.php</button>
-</form>
 </body>
 </html>
