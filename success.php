@@ -16,6 +16,7 @@ if (isset($_POST['expression'])) {
         }
     }
 }
+// Калькулятор закончился
 ?>
 
 <!DOCTYPE html>
