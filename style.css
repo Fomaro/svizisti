@@ -1,0 +1,98 @@
+body {
+    font-family: "Times New Roman", Times, serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.reg-card {
+    background: #fff;
+    padding: 25px 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+}
+
+h2 {
+    text-align: center;
+    color: #555;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 18px;
+    box-sizing: border-box;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #7a7a7a;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #555;
+}
+
+.agreement, .login-link {
+    margin-top: 15px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.agreement {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: left;
+}
+
+a {
+    color: #5dade2;
+    text-decoration: underline;
+}
+
+/* Стили для кнопок на страницах успеха/ошибки */
+.btn-back {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #7a7a7a;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
