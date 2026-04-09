@@ -1,0 +1,99 @@
+/* Общие настройки страницы */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #2c3e50;
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 10px;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+/* Навигация (Кнопки) */
+nav {
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #3498db;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav a:hover {
+    background-color: #2980b9;
+}
+
+nav a:active {
+    transform: translateY(2px);
+}
+
+/* Основной контент */
+main {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 800px;
+    min-height: 300px;
+}
+
+/* Стили для карточки с информацией о книге */
+.book-info {
+    border-left: 5px solid #3498db;
+    padding-left: 20px;
+}
+
+.book-info h2 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.book-info p {
+    margin: 8px 0;
+    font-size: 1.05rem;
+}
+
+.book-info strong {
+    color: #555;
+}
+
+.status-badge {
+    display: inline-block;
+    background: #27ae60;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Отладка */
+pre {
+    background: #272822;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 800px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+}

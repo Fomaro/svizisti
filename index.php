@@ -4,7 +4,7 @@ declare(strict_types=1);
 class Page
 {
     private string $name = "page";
-    private string $template = "<div><p>It is a default page</p></div>";
+    private string $template = "<div><p>Это главная страница</p></div>";
 
     public function render(): void
     {
@@ -31,7 +31,7 @@ class InfoPage extends Page
 {
     private string $name = "info";
     private string $template = '
-        <div style="border: 1px solid #333; padding: 20px; margin-top: 20px; background: #f9f9f9;">
+        <div class="book-info">
             <h2>Информация о книге</h2>
             <p><strong>Название:</strong> Царёв город</p>
             <p><strong>Автор:</strong> Крупняков Аркадий Степанович</p>
@@ -41,7 +41,7 @@ class InfoPage extends Page
             <p><strong>Издатель:</strong> Марийское книжное издательство</p>
             <p><strong>Город:</strong> Йошкар-Ола</p>
             <hr>
-            <p><small>Статус: Закончена | Добавил: Admin</small></p>
+            <p><small>Статус: <span class="status-badge">Закончена</span> | Добавил: Admin</small></p>
         </div>';
 
     public function render(): void
@@ -55,12 +55,8 @@ class InfoPage extends Page
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Лабораторная работа 14 - Библиотека</title>
-    <style>
-        nav a { margin-right: 15px; text-decoration: none; color: blue; font-weight: bold; }
-        nav a:hover { text-decoration: underline; }
-        body { font-family: sans-serif; line-height: 1.6; padding: 20px; }
-    </style>
+    <title>Библиотека - Лабораторная 14</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
